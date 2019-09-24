@@ -1,7 +1,7 @@
 import React from "react"
 import "./layout.css"
 
-import HeaderComponent from "./Header"
+import HeaderComponent from "./header"
 import Footer from "./footer"
 
 export default ({ children }) => (
