@@ -1,4 +1,13 @@
 import React from "react"
 import "./layout.css"
 
-export default () => <div></div>
+import HeaderComponent from "./Header"
+import Footer from "./footer"
+
+export default ({ children }) => (
+  <>
+    <HeaderComponent />
+    <main>{children} </main>
+    <Footer />
+  </>
+)
