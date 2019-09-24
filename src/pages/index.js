@@ -1,9 +1,9 @@
 import React from "react"
-import SectionOne from "../components/sectionOne"
-import HeaderComponent from "../components/header"
-import Hero from "../components/hero"
-import SectionTwo from "../components/sectionTwo"
-import Footer from "../components/footer"
+import SectionOne from "../Components/sectionOne"
+import HeaderComponent from "../Components/header"
+import Hero from "../Components/hero"
+import SectionTwo from "../Components/sectionTwo"
+import Footer from "../Components/footer"
 
 const Index = () => {
   return (

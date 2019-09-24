@@ -1,11 +1,15 @@
 import React from "react"
 import styled from "styled-components"
-import { backgroundColor, primaryColor, backgroundText } from "./styledConstants"
+import {
+  backgroundColor,
+  primaryColor,
+  backgroundText,
+} from "./styledConstants"
 import BigBrand from "../images/Big Brand.png"
 import frogIcon from "../images/frog-icon.png"
 import spring from "../images/spring.png"
 import campfire from "../images/campfire.png"
-import { GetStartedButton } from "../components/shared/shared"
+import { GetStartedButton } from "../Components/shared/shared"
 
 const StyledSectionTwo = styled.section`
   height: 100vh;
@@ -82,8 +86,10 @@ const SectionTwo = () => (
             </span>
             <br />
             <br />
-            <span style={{ color: `${primaryColor}` }}>Users wait 3 seconds</span> on average for
-            your site.
+            <span style={{ color: `${primaryColor}` }}>
+              Users wait 3 seconds
+            </span>{" "}
+            on average for your site.
             <br />
             <br />
             Do you have what it takes?
@@ -109,7 +115,8 @@ const SectionTwo = () => (
             within your site.
             <br />
             <br />
-            Adding <span style={{ color: `${primaryColor}` }}>
+            Adding{" "}
+            <span style={{ color: `${primaryColor}` }}>
               {" "}
               plugins to your favorite CMS
             </span>{" "}
@@ -127,11 +134,16 @@ const SectionTwo = () => (
             <br />
             <br />
             We give you a page with{" "}
-            <span style={{ color: `${primaryColor}` }}>focused branding and minimal clutter.</span>
+            <span style={{ color: `${primaryColor}` }}>
+              focused branding and minimal clutter.
+            </span>
             <br />
             <br />
-            We use an <span style={{ color: `${primaryColor}` }}>expert photographer </span>for an
-            even more specialized branding experience.
+            We use an{" "}
+            <span style={{ color: `${primaryColor}` }}>
+              expert photographer{" "}
+            </span>
+            for an even more specialized branding experience.
           </CardStatement>
           <GetStartedButton>Get Started</GetStartedButton>
         </Card>
