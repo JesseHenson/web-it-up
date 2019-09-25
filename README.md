@@ -1,9 +1,9 @@
 # Todo
 
-1. Make Mobile Friendly/ big screen friendly
+1. [x] Make Mobile Friendly/ big screen friendly
 
-- Add a Figma for mobile device
-- Add a website with 1900 as width
+- [x] Add a Figma for mobile device
+- [x] Add a website with 1900 as width
 
 2. Add Links
 3. Change out all images for gatsby images

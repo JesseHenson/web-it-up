@@ -12,25 +12,21 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
   width: 100%;
   position: fixed;
   z-index: 999999;
-  @media (min-width: 1200px) {
-    padding: 2rem;
-  }
 `
 
 const Image = styled.img`
   width: 6rem;
-  margin-bottom: -6.5px;
+  margin-bottom: -4.5rem;
   height: 4rem;
-  margin-left: 0;
+  margin-left: 5rem;
   @media (max-width: 768px) {
     width: 6rem;
     margin-bottom: -4.5rem;
     height: 4rem;
-    margin-left: 0;
+    margin-left: 2rem;
   }
 `
 
@@ -46,10 +42,13 @@ const LinkItem = styled(GatsbyLink)`
 const LinkGroup = styled.div`
   display: flex;
   width: 33%;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  margin-right: 5rem;
+  padding: 1rem 0;
   @media (max-width: 768px) {
     width: 66%;
+    margin-right: 2rem;
   }
 `
 
