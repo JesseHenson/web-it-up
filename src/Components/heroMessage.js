@@ -17,6 +17,10 @@ const Card = styled.div`
   margin-right: 6rem;
   margin-bottom: 3rem;
   float: right;
+  @media (max-width: 768px) {
+    margin-right: auto;
+    float: auto;
+  }
 `
 
 const BrandImage = styled.img`
@@ -39,7 +43,9 @@ const HeroMessage = () => {
   return (
     <Card>
       <BrandImage src={BigBrand}></BrandImage>
-      <CardContent>Set your website on Fire with blazing fast optimzation</CardContent>
+      <CardContent>
+        Set your website on Fire with blazing fast optimzation
+      </CardContent>
       <GetStartedHeroButton>Get Started</GetStartedHeroButton>
     </Card>
   )

@@ -35,6 +35,9 @@ const StyledArticleTwo = styled.article`
   display: flex;
   flex-direction: row;
   width: 100%;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 const CardWrapper = styled.div`
