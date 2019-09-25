@@ -9,8 +9,6 @@ import { backgroundColor } from "./styledConstants"
 const Image = styled.img`
   width: 100px;
   height: 60px;
-  @media (max-width: 768px) {
-  }
 `
 
 const StyledFooter = styled.footer`
@@ -20,6 +18,9 @@ const StyledFooter = styled.footer`
   align-items: center;
   justify-content: space-between;
   background-color: ${backgroundColor};
+  @media (min-width: 1200px) {
+    padding: 2rem 10rem;
+  }
 `
 
 const ContactIconWrapper = styled.div`

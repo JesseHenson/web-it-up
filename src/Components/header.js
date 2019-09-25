@@ -16,14 +16,18 @@ const Header = styled.header`
   width: 100%;
   position: fixed;
   z-index: 999999;
+  @media (min-width: 1200px) {
+    padding: 2rem;
+  }
 `
 
 const Image = styled.img`
-  width: 100px;
-  margin-bottom: -50px;
-  margin-left: 2rem;
+  width: 6rem;
+  margin-bottom: -6.5px;
+  height: 4rem;
+  margin-left: 0;
   @media (max-width: 768px) {
-    width: 25%;
+    width: 6rem;
     margin-bottom: -4.5rem;
     height: 4rem;
     margin-left: 0;
@@ -37,9 +41,6 @@ const HeaderContact = styled(ContactNow)`
 const LinkItem = styled(GatsbyLink)`
   color: ${primaryColor};
   text-decoration: none;
-  @media (max-width: 768px) {
-    display: none;
-  }
 `
 
 const LinkGroup = styled.div`
@@ -47,7 +48,9 @@ const LinkGroup = styled.div`
   width: 33%;
   justify-content: space-around;
   align-items: center;
-  margin-right: 2rem;
+  @media (max-width: 768px) {
+    width: 66%;
+  }
 `
 
 const HeaderComponent = () => (

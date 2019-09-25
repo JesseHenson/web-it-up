@@ -3,6 +3,7 @@ import styled from "styled-components"
 import HeroMessage from "./heroMessage"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import { placeholder } from "@babel/types"
 
 const Parallax = styled.div`
   height: 100vh;
@@ -46,6 +47,12 @@ const PlaceHolder = styled.div`
   @media (max-width: 768px) {
     display: none;
   }
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    display: none;
+  }
+  @media (min-width: 1200px) {
+    display: none;
+  }
 `
 
 export default () => {
@@ -77,7 +84,7 @@ export default () => {
         style={{ position: "absolute" }}
         fluid={data.fireWeed.childImageSharp.fluid}
       />
-      <div></div>
+      <PlaceHolder />
       <HeroMessage></HeroMessage>
     </Parallax>
   )

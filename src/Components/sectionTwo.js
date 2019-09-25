@@ -21,6 +21,7 @@ const StyledSectionTwo = styled.section`
   padding: 100px 50px;
   margin-top: -20px;
   border-radius: 10px 10px 0 0;
+  max-width: 1200px;
 `
 
 const StyledBrandImage = styled.img`

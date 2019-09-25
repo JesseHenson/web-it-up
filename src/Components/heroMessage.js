@@ -8,27 +8,33 @@ const Card = styled.div`
   background-color: rgba(34, 34, 34, 0.6);
   position: relative;
   border-radius: 10px;
-  width: 25%;
+  max-width: 10rem;
   color: ${backgroundText};
-  padding-top: 4rem;
+  padding-top: 2rem;
   padding-bottom: 2rem;
   text-align: center;
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    max-width: 75%;
+  }
+  @media (min-width: 1200px) {
+    max-width: 50%;
+  }
   @media (max-width: 768px) {
     width: 75%;
   }
 `
 
 const BrandImage = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 4rem;
+  height: 4rem;
   position: absolute;
-  top: -75px;
-  right: calc(50% - 75px);
+  top: -2rem;
+  right: calc(50% - 2rem);
 `
 
 const CardContent = styled.p`
-  margin: 20px;
-  font-size: 40px;
+  margin: 1.5rem;
+  font-size: 1.5rem;
 `
 
 const GetStartedHeroButton = styled(GetStartedButton)`
