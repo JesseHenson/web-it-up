@@ -12,7 +12,6 @@ import campfire from "../images/campfire.png"
 import { GetStartedButton } from "../Components/shared/shared"
 
 const StyledSectionTwo = styled.section`
-  height: 100vh;
   position: relative;
   background-color: ${primaryColor};
   display: flex;
@@ -41,7 +40,7 @@ const StyledArticleTwo = styled.article`
 `
 
 const CardWrapper = styled.div`
-  margin-top: 15%;
+  margin-top: 4rem;
   width: 100%;
   display: flex;
   flex-direction: column;

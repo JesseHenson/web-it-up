@@ -23,11 +23,18 @@ const StyledFooter = styled.footer`
 `
 
 const ContactIconWrapper = styled.div`
-  /* something */
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
 `
 
 const ContactIcon = styled.img`
-  margin: 1.2rem;
+  width: 64px;
+  height: 64px;
+  @media (max-width: 768px) {
+    height: 32px;
+    width: 32px;
+  }
 `
 
 const Footer = () => {

@@ -25,7 +25,7 @@ const Image = styled.img`
   @media (max-width: 768px) {
     width: 25%;
     margin-bottom: -4.5rem;
-    height: 6rem;
+    height: 4rem;
     margin-left: 0;
   }
 `

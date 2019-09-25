@@ -13,13 +13,8 @@ const Card = styled.div`
   padding-top: 4rem;
   padding-bottom: 2rem;
   text-align: center;
-  margin-top: 10rem;
-  margin-right: 6rem;
-  margin-bottom: 3rem;
-  float: right;
   @media (max-width: 768px) {
-    margin-right: auto;
-    float: auto;
+    width: 75%;
   }
 `
 
