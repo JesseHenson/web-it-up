@@ -20,7 +20,7 @@ const Card = styled.div`
     max-width: 50%;
   }
   @media (max-width: 768px) {
-    width: 80%;
+    max-width: 60%;
   }
 `
 
