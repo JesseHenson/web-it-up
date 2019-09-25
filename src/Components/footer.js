@@ -9,6 +9,8 @@ import { backgroundColor } from "./styledConstants"
 const Image = styled.img`
   width: 100px;
   height: 60px;
+  @media (max-width: 768px) {
+  }
 `
 
 const StyledFooter = styled.footer`

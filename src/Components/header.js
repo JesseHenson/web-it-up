@@ -22,11 +22,22 @@ const Image = styled.img`
   width: 100px;
   margin-bottom: -50px;
   margin-left: 2rem;
+  @media (max-width: 768px) {
+    width: 25%;
+    margin-bottom: -4.5rem;
+  }
+`
+
+const HeaderContact = styled(ContactNow)`
+  padding: 5px 10px 5px 10px;
 `
 
 const LinkItem = styled(GatsbyLink)`
   color: ${primaryColor};
   text-decoration: none;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 const LinkGroup = styled.div`
@@ -43,7 +54,7 @@ const HeaderComponent = () => (
     <LinkGroup>
       <LinkItem to="/">About</LinkItem>
       <LinkItem to="/">Blog</LinkItem>
-      <ContactNow to="/">Contact Now</ContactNow>
+      <HeaderContact to="/">Contact Now</HeaderContact>
     </LinkGroup>
   </Header>
 )
