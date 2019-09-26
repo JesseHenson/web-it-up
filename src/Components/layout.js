@@ -12,10 +12,12 @@ const StyledMainWrapper = styled.main`
   max-width: 1200px;
 `
 
-export default ({ children }) => (
+const Layout = ({ children }) => (
   <>
     <HeaderComponent />
     <StyledMainWrapper>{children} </StyledMainWrapper>
     <Footer />
   </>
 )
+
+export default Layout

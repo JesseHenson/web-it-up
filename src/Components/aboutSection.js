@@ -1,4 +1,5 @@
 import React from "react"
+
 import styled from "styled-components"
 import {
   backgroundColor,
@@ -11,14 +12,14 @@ import spring from "../images/spring.png"
 import campfire from "../images/campfire.png"
 import { GetStartedButton } from "../Components/shared/shared"
 
-const StyledSectionTwo = styled.section`
+const StyledSection = styled.section`
   position: relative;
   background-color: ${primaryColor};
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding: 100px 50px;
+  padding: 3rem 0;
   margin-top: -20px;
   border-radius: 10px 10px 0 0;
   max-width: 1200px;
@@ -26,15 +27,16 @@ const StyledSectionTwo = styled.section`
 
 const StyledBrandImage = styled.img`
   position: absolute;
-  top: -100px;
+  bottom: -2rem;
   left: calc(50%-100px);
   width: 200px;
 `
 
-const StyledArticleTwo = styled.article`
+const StyledArticle = styled.article`
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 90%;
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -61,6 +63,19 @@ export const Card = styled.div`
   text-align: center;
 `
 
+const ShortCard = styled(CardWrapper)`
+  margin-bottom: 9rem;
+  @media (max-width: 768px) {
+    margin-bottom: 0;
+  }
+`
+
+const ThirdCard = styled(CardWrapper)`
+  @media (max-width: 768px) {
+    margin-bottom: 9rem;
+  }
+`
+
 export const CardTitle = styled.h1`
   color: ${backgroundText};
 `
@@ -74,10 +89,10 @@ export const IconImage = styled.img`
   height: 50px;
 `
 
-const SectionTwo = () => (
-  <StyledSectionTwo>
+const AboutSection = () => (
+  <StyledSection>
     <StyledBrandImage src={BigBrand}></StyledBrandImage>
-    <StyledArticleTwo>
+    <StyledArticle>
       <CardWrapper>
         <IconImage src={campfire}></IconImage>
         <Card>
@@ -100,7 +115,7 @@ const SectionTwo = () => (
           <GetStartedButton to="/get-started">Get Started</GetStartedButton>
         </Card>
       </CardWrapper>
-      <CardWrapper>
+      <ShortCard>
         <IconImage src={spring}></IconImage>
         <Card>
           <CardTitle>Flexible</CardTitle>
@@ -127,8 +142,8 @@ const SectionTwo = () => (
           </CardStatement>
           <GetStartedButton to="/get-started">Get Started</GetStartedButton>
         </Card>
-      </CardWrapper>
-      <CardWrapper>
+      </ShortCard>
+      <ThirdCard>
         <IconImage src={frogIcon}></IconImage>
         <Card>
           <CardTitle>Branded</CardTitle>
@@ -150,9 +165,9 @@ const SectionTwo = () => (
           </CardStatement>
           <GetStartedButton to="/get-started">Get Started</GetStartedButton>
         </Card>
-      </CardWrapper>
-    </StyledArticleTwo>
-  </StyledSectionTwo>
+      </ThirdCard>
+    </StyledArticle>
+  </StyledSection>
 )
 
-export default SectionTwo
+export default AboutSection

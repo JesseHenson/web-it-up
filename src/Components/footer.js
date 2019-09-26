@@ -5,6 +5,7 @@ import twitter from "../images/twitter-sign.png"
 import facebook from "../images/facebook-logo.png"
 import github from "../images/github-sign.png"
 import { backgroundColor } from "./styledConstants"
+import { Link } from "gatsby"
 
 const Image = styled.img`
   width: 100px;
@@ -41,11 +42,19 @@ const ContactIcon = styled.img`
 const Footer = () => {
   return (
     <StyledFooter>
-      <Image src={Brand} />
+      <Link to="/">
+        <Image src={Brand} />
+      </Link>
       <ContactIconWrapper>
-        <ContactIcon src={github} />
-        <ContactIcon src={twitter} />
-        <ContactIcon src={facebook} />
+        <a href="https://github.com/JesseHenson/web-it-up">
+          <ContactIcon src={github} />
+        </a>
+        <a href="https://twitter.com/henson_dev">
+          <ContactIcon src={twitter} />
+        </a>
+        <a href="https://www.facebook.com/WebbitUpDev/">
+          <ContactIcon src={facebook} />
+        </a>
       </ContactIconWrapper>
     </StyledFooter>
   )

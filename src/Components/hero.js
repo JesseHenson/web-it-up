@@ -55,7 +55,7 @@ const PlaceHolder = styled.div`
   }
 `
 
-export default () => {
+const Hero = ({ children }) => {
   const data = useStaticQuery(graphql`
     query {
       fireImage: file(relativePath: { eq: "Twisted-Fire.jpg" }) {
@@ -85,7 +85,9 @@ export default () => {
         fluid={data.fireWeed.childImageSharp.fluid}
       />
       <PlaceHolder />
-      <HeroMessage></HeroMessage>
+      {children}
     </Parallax>
   )
 }
+
+export default Hero

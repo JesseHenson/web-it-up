@@ -10,6 +10,7 @@ const Header = styled.header`
   background-color: ${backgroundColor};
   color: ${primaryColor};
   display: flex;
+  opacity: 0.97;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -19,12 +20,12 @@ const Header = styled.header`
 
 const Image = styled.img`
   width: 6rem;
-  margin-bottom: -4.5rem;
+  margin-bottom: -3.5rem;
   height: 4rem;
   margin-left: 5rem;
   @media (max-width: 768px) {
     width: 6rem;
-    margin-bottom: -4.5rem;
+    margin-bottom: -3.5rem;
     height: 4rem;
     margin-left: 2rem;
   }
@@ -54,11 +55,13 @@ const LinkGroup = styled.div`
 
 const HeaderComponent = () => (
   <Header>
-    <Image src={Brand} />
+    <LinkItem to="/">
+      <Image src={Brand} />
+    </LinkItem>
     <LinkGroup>
-      <LinkItem to="/">About</LinkItem>
-      <LinkItem to="/">Blog</LinkItem>
-      <HeaderContact to="/">Contact Now</HeaderContact>
+      <LinkItem to="/about">About</LinkItem>
+      <LinkItem to="/blog">Blog</LinkItem>
+      <HeaderContact to="/get-started">Contact Now</HeaderContact>
     </LinkGroup>
   </Header>
 )

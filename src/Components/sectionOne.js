@@ -41,6 +41,6 @@ export default () => (
         are they going somewhere else.
       </span>
     </StyledArticleOne>
-    <SectionOneContactNow>Find Out Now </SectionOneContactNow>
+    <SectionOneContactNow to="/get-started">Find Out Now </SectionOneContactNow>
   </StyledSectionOne>
 )

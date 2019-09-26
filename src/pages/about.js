@@ -1,8 +1,13 @@
 import React from "react"
 import Layout from "../Components/layout"
+import AboutSection from "../Components/aboutSection"
 
 const About = () => {
-  return <Layout>{/* something */}</Layout>
+  return (
+    <Layout>
+      <AboutSection></AboutSection>
+    </Layout>
+  )
 }
 
 export default About

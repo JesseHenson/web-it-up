@@ -47,7 +47,7 @@ const HeroMessage = () => {
       <CardContent>
         Set your website on Fire with blazing fast optimzation
       </CardContent>
-      <GetStartedHeroButton>Get Started</GetStartedHeroButton>
+      <GetStartedHeroButton to="/get-started">Get Started</GetStartedHeroButton>
     </Card>
   )
 }
