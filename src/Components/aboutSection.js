@@ -5,6 +5,7 @@ import {
   backgroundColor,
   primaryColor,
   backgroundText,
+  primaryBackground,
 } from "./styledConstants"
 import BigBrand from "../images/Big Brand.png"
 import frogIcon from "../images/frog-icon.png"
@@ -14,7 +15,7 @@ import { GetStartedButton } from "../Components/shared/shared"
 
 const StyledSection = styled.section`
   position: relative;
-  background-color: ${primaryColor};
+  background: ${primaryBackground};
   display: flex;
   align-items: center;
   flex-direction: column;
