@@ -6,6 +6,8 @@ import {
   primaryColor,
 } from "./styledConstants"
 import { ContactNow } from "./shared/shared"
+import { Box, makeStyles, Button } from "@material-ui/core"
+import { Link } from "gatsby"
 
 export const StyledSectionOne = styled.section`
   background-color: ${backgroundColor};
@@ -20,27 +22,60 @@ const SectionOneContactNow = styled(ContactNow)`
   margin-bottom: 150px;
 `
 
-export const StyledArticleOne = styled.article`
-  width: 75%;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  font-size: 2rem;
-  color: ${backgroundText};
-  line-height: 45px;
-  text-align: center;
-`
-export default () => (
-  <StyledSectionOne>
-    <StyledArticleOne>
-      Most users will wait an{" "}
-      <span style={{ color: `${primaryColor}` }}>average of 3 seconds. </span>
-      They are accessing your site on a mobile device possibly{" "}
-      <span style={{ color: `${primaryColor}` }}>with 3G technology. </span>Are
-      they going to view and possibly buy your product... or{" "}
-      <span style={{ color: `${primaryColor}` }}>
-        are they going somewhere else.
-      </span>
-    </StyledArticleOne>
-    <SectionOneContactNow to="/get-started">Find Out Now </SectionOneContactNow>
-  </StyledSectionOne>
-)
+export const StyledArticleOne = styled.article``
+
+const useStyles = makeStyles(theme => ({
+  container: {
+    backgroundColor: theme.palette.background.default,
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    padding: "50px",
+  },
+  article: {
+    width: "75%",
+    marginTop: "50px",
+    marginBottom: "50px",
+    fontSize: "2rem",
+    color: theme.palette.text.primary,
+    lineHeight: "45px",
+    textAlign: "center",
+  },
+  highlight: {
+    color: theme.palette.primary.main,
+  },
+  button: {
+    border: 0,
+    borderRadius: 3,
+    color: theme.palette.text.primary,
+    marginBottom: theme.spacing(15),
+  },
+}))
+export default () => {
+  const classes = useStyles()
+  return (
+    <Box component="section" className={classes.container}>
+      <Box component="article" className={classes.article}>
+        Most users will wait an{" "}
+        <span className={classes.highlight}>average of 3 seconds. </span>
+        They are accessing your site on a mobile device possibly{" "}
+        <span className={classes.highlight}>with 3G technology. </span>
+        Are they going to view and possibly buy your product... or{" "}
+        <span className={classes.highlight}>
+          are they going somewhere else.
+        </span>
+      </Box>
+      <Link style={{ textDecoration: "none" }} to="/get-started">
+        <Button
+          component="p"
+          variant="contained"
+          color="primary"
+          className={classes.button}
+        >
+          Find Out Now
+        </Button>
+      </Link>
+    </Box>
+  )
+}

@@ -1,10 +1,23 @@
 import React from "react"
+import { Link } from "gatsby"
 import styled from "styled-components"
 import Brand from "../images/Group.png"
 import { backgroundColor, primaryColor } from "./styledConstants"
+import Button from "@material-ui/core/Button"
 
-import GatsbyLink from "gatsby-link"
-import { ContactNow } from "./shared/shared"
+import { makeStyles } from "@material-ui/core"
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    border: 0,
+    borderRadius: 3,
+    color: theme.palette.text.primary,
+    marginRight: theme.spacing(1),
+  },
+  link: {
+    color: theme.palette.primary,
+  },
+}))
 
 const Header = styled.header`
   background-color: ${backgroundColor};
@@ -31,15 +44,6 @@ const Image = styled.img`
   }
 `
 
-const HeaderContact = styled(ContactNow)`
-  padding: 5px 10px 5px 10px;
-`
-
-const LinkItem = styled(GatsbyLink)`
-  color: ${primaryColor};
-  text-decoration: none;
-`
-
 const LinkGroup = styled.div`
   display: flex;
   width: 33%;
@@ -53,17 +57,46 @@ const LinkGroup = styled.div`
   }
 `
 
-const HeaderComponent = () => (
-  <Header>
-    <LinkItem to="/">
-      <Image src={Brand} />
-    </LinkItem>
-    <LinkGroup>
-      <LinkItem to="/about">About</LinkItem>
-      <LinkItem to="/blog">Blog</LinkItem>
-      <HeaderContact to="/get-started">Contact Now</HeaderContact>
-    </LinkGroup>
-  </Header>
-)
+const HeaderComponent = () => {
+  const classes = useStyles()
+
+  return (
+    <Header>
+      <Link to="/">
+        <Image src={Brand} />
+      </Link>
+      <LinkGroup>
+        <Link style={{ textDecoration: "none" }} to="/about">
+          <Button
+            component="p"
+            color="primary"
+            className={(classes.button, classes.link)}
+          >
+            About
+          </Button>
+        </Link>
+        <Link style={{ textDecoration: "none" }} to="/blog">
+          <Button
+            component="p"
+            color="primary"
+            className={(classes.button, classes.link)}
+          >
+            Blog
+          </Button>
+        </Link>
+        <Link style={{ textDecoration: "none" }} to="/get-started">
+          <Button
+            component="p"
+            variant="contained"
+            color="primary"
+            className={classes.button}
+          >
+            Contact Now
+          </Button>
+        </Link>
+      </LinkGroup>
+    </Header>
+  )
+}
 
 export default HeaderComponent

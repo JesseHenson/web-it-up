@@ -5,11 +5,22 @@ import {
   primaryColor,
   backgroundText,
 } from "./styledConstants"
-import BigBrand from "../images/Big Brand.png"
 import frogIcon from "../images/frog-icon.png"
 import spring from "../images/spring.png"
 import campfire from "../images/campfire.png"
 import { GetStartedButton } from "../Components/shared/shared"
+import BrandSvg from "./brandSvg"
+import {
+  Box,
+  CardContent,
+  Typography,
+  CardActions,
+  Button,
+  makeStyles,
+  CardHeader,
+} from "@material-ui/core"
+import { Link } from "gatsby"
+import { FrogSvg, FireSvg } from "./iconSvg"
 
 const StyledSectionTwo = styled.section`
   position: relative;
@@ -34,7 +45,7 @@ const StyledBrandImage = styled.img`
 const StyledArticleTwo = styled.article`
   display: flex;
   flex-direction: row;
-  width: 100%;
+  max-width: 100vw;
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -74,85 +85,99 @@ export const IconImage = styled.img`
   height: 50px;
 `
 
-const SectionTwo = () => (
-  <StyledSectionTwo>
-    <StyledBrandImage src={BigBrand}></StyledBrandImage>
-    <StyledArticleTwo>
-      <CardWrapper>
-        <IconImage src={campfire}></IconImage>
-        <Card>
-          <CardTitle>Blazing Fast Speeds</CardTitle>
-          <CardStatement>
-            We optimize and opt for the fastest frameworks to{" "}
-            <span style={{ color: `${primaryColor}` }}>
-              make sure your site is as fast as possible.{" "}
-            </span>
-            <br />
-            <br />
-            <span style={{ color: `${primaryColor}` }}>
-              Users wait 3 seconds
-            </span>{" "}
-            on average for your site.
-            <br />
-            <br />
-            Do you have what it takes?
-          </CardStatement>
-          <GetStartedButton to="/get-started">Get Started</GetStartedButton>
-        </Card>
-      </CardWrapper>
-      <CardWrapper>
-        <IconImage src={spring}></IconImage>
-        <Card>
-          <CardTitle>Flexible</CardTitle>
-          <CardStatement>
-            Minimal framework and limiting platforms so{" "}
-            <span style={{ color: `${primaryColor}` }}>
-              you can scale and build your site your way.
-            </span>{" "}
-            <br />
-            <br />
-            Flexible enough to{" "}
-            <span style={{ color: `${primaryColor}` }}>
-              add login functionality or even ecommerce{" "}
-            </span>
-            within your site.
-            <br />
-            <br />
-            Adding{" "}
-            <span style={{ color: `${primaryColor}` }}>
-              {" "}
-              plugins to your favorite CMS
-            </span>{" "}
-            is a breeze
-          </CardStatement>
-          <GetStartedButton to="/get-started">Get Started</GetStartedButton>
-        </Card>
-      </CardWrapper>
-      <CardWrapper>
-        <IconImage src={frogIcon}></IconImage>
-        <Card>
-          <CardTitle>Branded</CardTitle>
-          <CardStatement>
-            Minimal and simple colors, and logos are our bread and butter.
-            <br />
-            <br />
-            We give you a page with{" "}
-            <span style={{ color: `${primaryColor}` }}>
-              focused branding and minimal clutter.
-            </span>
-            <br />
-            <br />
-            We use an{" "}
-            <span style={{ color: `${primaryColor}` }}>
-              expert photographer{" "}
-            </span>
-            for an even more specialized branding experience.
-          </CardStatement>
-          <GetStartedButton to="/get-started">Get Started</GetStartedButton>
-        </Card>
-      </CardWrapper>
-    </StyledArticleTwo>
-  </StyledSectionTwo>
-)
+const useStyles = makeStyles(theme => ({
+  card: {
+    minWidth: 275,
+    maxWidth: 650,
+    background: "rgba(36, 34, 34, 1)",
+    margin: theme.spacing(4),
+    padding: theme.spacing(4),
+    textAlign: "center",
+    borderRadius: "5px",
+  },
+  cardHeader: {
+    color: theme.palette.text.primary,
+  },
+  cardContent: {
+    color: theme.palette.text.primary,
+  },
+  cardAction: {
+    display: "flex",
+    justifyContent: "center",
+  },
+}))
+
+const content = [
+  {
+    icon: "campfire",
+    title: "Blazing Fast Speeds",
+    content:
+      "We optimize and opt for the fastest frameworks to make sure your site is as fast as possible. Users wait 3 seconds on average for your site. Do you have what it takes?",
+  },
+  {
+    icon: "spring",
+    title: "Flexible",
+    content:
+      "Minimal framework and limiting platforms so you can scale and build your site your way. Flexible enough to add login functionality or even ecommerce within your site. Adding plugins to your favorite CMS is a breeze",
+  },
+  {
+    icon: "frogIcon",
+    title: "Branded",
+    content:
+      "Minimal and simple colors, and logos are our bread and butter. We give you a page with focused branding and minimal clutter. We use an expert photographer for an even more specialized branding experience.",
+  },
+]
+
+const SectionTwo = () => {
+  const classes = useStyles()
+  return (
+    <>
+      <StyledSectionTwo>
+        <BrandSvg style={{ marginTop: "-175px" }} />
+        <StyledArticleTwo>
+          {content.map(cardInfo => (
+            <CardWrapper>
+              <IconImage src={cardInfo.icon}></IconImage>
+              {(() => {
+                switch (cardInfo.icon) {
+                  case 'campfire'
+                  default:
+                    return null
+                }
+              })()}
+              <Box overflow="visible" className={classes.card}>
+                <CardHeader
+                  className={classes.cardHeader}
+                  title={cardInfo.title}
+                ></CardHeader>
+                <CardContent>
+                  <Typography
+                    className={classes.cardContent}
+                    variant="h6"
+                    gutterBottom
+                  >
+                    {cardInfo.content}
+                  </Typography>
+                </CardContent>
+                <CardActions className={classes.cardAction}>
+                  <Link style={{ textDecoration: "none" }} to="/get-started">
+                    <Button
+                      className={classes.button}
+                      component="p"
+                      variant="outlined"
+                      color="primary"
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
+                </CardActions>
+              </Box>
+            </CardWrapper>
+          ))}
+        </StyledArticleTwo>
+      </StyledSectionTwo>
+    </>
+  )
+}
 
 export default SectionTwo

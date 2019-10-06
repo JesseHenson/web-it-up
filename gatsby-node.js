@@ -1,43 +1,42 @@
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const Promise = require("bluebird")
+const path = require("path")
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
-    createNodeField({
-      node,
-      name: `slug`,
-      value: slug,
-    })
-  }
-}
-
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-  const result = await graphql(`
-    query {
-      allMarkdownRemark {
-        edges {
-          node {
-            fields {
-              slug
+
+  return new Promise((resolve, reject) => {
+    const blogPost = path.resolve("./src/templates/blog-post.js")
+    resolve(
+      graphql(
+        `
+          {
+            allContentfulBlogPost {
+              edges {
+                node {
+                  title
+                  slug
+                }
+              }
             }
           }
+        `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors)
+          reject(result.errors)
         }
-      }
-    }
-  `)
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    createPage({
-      path: node.fields.slug,
-      component: path.resolve(`./src/templates/blog-post.js`),
-      context: {
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
-        slug: node.fields.slug,
-      },
-    })
+
+        const posts = result.data.allContentfulBlogPost.edges
+        posts.forEach((post, index) => {
+          createPage({
+            path: `/blog/${post.node.slug}/`,
+            component: blogPost,
+            context: {
+              slug: post.node.slug,
+            },
+          })
+        })
+      })
+    )
   })
 }

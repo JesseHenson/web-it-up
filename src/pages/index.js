@@ -1,16 +1,16 @@
 import React from "react"
 import SectionOne from "../Components/sectionOne"
-import Hero from "../Components/hero"
 import SectionTwo from "../Components/sectionTwo"
 import Layout from "../Components/layout"
-import HeroMessage from "../Components/heroMessage"
+import StyledBackgroundSection from "../Components/backgroundSection"
+import HeroCard from "../Components/hero-card"
 
 const Index = () => {
   return (
     <Layout>
-      <Hero>
-        <HeroMessage></HeroMessage>
-      </Hero>
+      <StyledBackgroundSection>
+        <HeroCard />
+      </StyledBackgroundSection>
       <SectionOne />
       <SectionTwo />
     </Layout>
