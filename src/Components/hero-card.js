@@ -18,6 +18,11 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(4),
     textAlign: "center",
     borderRadius: "5px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    height: "50%",
+    alignItems: "center",
   },
   cardAction: {
     display: "flex",
@@ -46,7 +51,7 @@ export default function HeroCard() {
         <BrandSVG style={{ marginTop: "-100px" }} />
         <CardContent>
           <Typography className={classes.cardContent} variant="h4" gutterBottom>
-            Set your website on Fire with blazing fast optimzation
+            Set your website on Fire with blazing fast optimization
           </Typography>
         </CardContent>
         <CardActions className={classes.cardAction}>

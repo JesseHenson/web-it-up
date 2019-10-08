@@ -5,16 +5,36 @@ import Layout from "../Components/layout"
 import StyledBackgroundSection from "../Components/backgroundSection"
 import HeroCard from "../Components/hero-card"
 
-const Index = () => {
+const Index = ({ data }) => {
   return (
     <Layout>
       <StyledBackgroundSection>
         <HeroCard />
       </StyledBackgroundSection>
       <SectionOne />
-      <SectionTwo />
+      <SectionTwo cardInfo={data.allContentfulCardInfo.edges} />
     </Layout>
   )
 }
+
+export const indexQuery = graphql`
+  query IndexQuery {
+    allContentfulCardInfo {
+      edges {
+        node {
+          title
+          content {
+            content
+          }
+          icon {
+            fluid {
+              ...GatsbyContentfulFluid_tracedSVG
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 export default Index

@@ -1,28 +1,7 @@
 import React from "react"
-import styled from "styled-components"
-import {
-  backgroundColor,
-  backgroundText,
-  primaryColor,
-} from "./styledConstants"
-import { ContactNow } from "./shared/shared"
-import { Box, makeStyles, Button } from "@material-ui/core"
+
+import { Box, makeStyles, Button, Container } from "@material-ui/core"
 import { Link } from "gatsby"
-
-export const StyledSectionOne = styled.section`
-  background-color: ${backgroundColor};
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 50px;
-`
-
-const SectionOneContactNow = styled(ContactNow)`
-  margin-bottom: 150px;
-`
-
-export const StyledArticleOne = styled.article``
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -32,6 +11,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "space-around",
     padding: "50px",
+    height: "100vh",
   },
   article: {
     width: "75%",
@@ -52,15 +32,18 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(15),
   },
 }))
+
 export default () => {
   const classes = useStyles()
   return (
-    <Box component="section" className={classes.container}>
+    <Container component="section" className={classes.container}>
       <Box component="article" className={classes.article}>
-        Most users will wait an{" "}
-        <span className={classes.highlight}>average of 3 seconds. </span>
-        They are accessing your site on a mobile device possibly{" "}
-        <span className={classes.highlight}>with 3G technology. </span>
+        Most users will only wait{" "}
+        <span className={classes.highlight}>
+          3 seconds before they'll go find a different site.{" "}
+        </span>
+        They're probably using a mobile phone with slow service and maybe even{" "}
+        <span className={classes.highlight}> 3G technology. </span>
         Are they going to view and possibly buy your product... or{" "}
         <span className={classes.highlight}>
           are they going somewhere else.
@@ -76,6 +59,6 @@ export default () => {
           Find Out Now
         </Button>
       </Link>
-    </Box>
+    </Container>
   )
 }

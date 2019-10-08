@@ -1,30 +1,39 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import Helmet from "react-helmet"
+import { graphql } from "gatsby"
 import Layout from "../Components/layout"
-import ArticlePreview from "../components/article-preview"
+import ArticlePreview from "../Components/article-preview"
+import { Grid, makeStyles, GridList, GridListTile } from "@material-ui/core"
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden",
+    backgroundColor: theme.palette.background.paper,
+  },
+  gridList: {},
+}))
 
 const BlogIndex = ({ location, data }) => {
   const posts = data.allContentfulBlogPost.edges
-
+  const classes = useStyles()
   return (
     <Layout location={location}>
-      <ul>
-        <Helmet title={data.site.siteMetadata.title} />
-        <div>Blog</div>
-        <ul>
-          <h2>Recent articles</h2>
-          <ul>
-            {posts.map(({ node }) => {
-              return (
-                <li key={node.slug}>
-                  <ArticlePreview article={node} />
-                </li>
-              )
-            })}
-          </ul>
-        </ul>
-      </ul>
+      <div>Blog</div>
+      <h2>Recent articles</h2>
+      <div className={classes.root}>
+        <GridList
+          spacing="200"
+          cellHeight="auto"
+          className={classes.gridList}
+          cols={3}
+        >
+          {posts.map(tile => (
+            <ArticlePreview article={tile} />
+          ))}
+        </GridList>
+      </div>
     </Layout>
   )
 }
