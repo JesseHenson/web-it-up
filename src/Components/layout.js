@@ -1,20 +1,14 @@
 import React from "react"
 import { makeStyles, ThemeProvider } from "@material-ui/styles"
-import { createMuiTheme } from "@material-ui/core"
-import styled from "styled-components"
+import { createMuiTheme, Container } from "@material-ui/core"
 import "./layout.css"
 
 import HeaderComponent from "./header"
 import Footer from "./footer"
 
-import Box from "@material-ui/core/Box"
-
 const useStyles = makeStyles(theme => ({
-  box: {
-    display: "flex",
-    margin: "auto",
-    flexDirection: "column",
-    maxWidth: "1200px",
+  container: {
+    overflowX: "hidden",
   },
 }))
 
@@ -32,13 +26,16 @@ const theme = createMuiTheme({
   },
 })
 
-const Layout = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <HeaderComponent />
-    <Box component="main">{children}</Box>
-    {/* <StyledMainWrapper>{children} </StyledMainWrapper> */}
-    <Footer />
-  </ThemeProvider>
-)
+const Layout = ({ children }) => {
+  const classes = useStyles()
+  return (
+    <ThemeProvider theme={theme}>
+      <HeaderComponent />
+      <div className={classes.container}> {children}</div>
+
+      <Footer />
+    </ThemeProvider>
+  )
+}
 
 export default Layout

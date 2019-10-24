@@ -31,6 +31,7 @@ export const indexQuery = graphql`
               ...GatsbyContentfulFluid_tracedSVG
             }
           }
+          letter
         }
       }
     }

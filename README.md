@@ -7,14 +7,15 @@
 
 2. [x] Add Links
 3. [x] Change out all images for gatsby images
-4. change all content to contentful api
-5. change all ui to material ui
-6. Create About, Blog and Contact Now pages
-7. Make about, blog and contact pages responsive
-8. Add Back SEO Functionality from basic gatsby site
-9. Add in helmet with metadata
-10. Manifest
-11. Offline mode
-12. Google Analytics
-13. Facebook Analytics
-14. Netlify Analytics
+4. [x] change all content to contentful api
+5. [x] change all ui to material ui
+6. Add Social media icons to all blogs and main page
+7. Create About, Blog and Contact Now pages
+8. Make about, blog and contact pages responsive
+9. Add Back SEO Functionality from basic gatsby site
+10. Add in helmet with metadata
+11. Manifest
+12. Offline mode
+13. Google Analytics
+14. Facebook Analytics
+15. Netlify Analytics

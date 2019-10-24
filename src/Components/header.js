@@ -12,16 +12,14 @@ import {
   Toolbar,
   useScrollTrigger,
   Slide,
+  Grid,
 } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   header: {
     backgroundColor: theme.palette.background.default,
     color: theme.palette.primary.main,
-    display: "flex",
     opacity: 0.97,
-    justifyContent: "space-between",
-    alignItems: "center",
     width: "100%",
     zIndex: "999999",
   },
@@ -29,17 +27,15 @@ const useStyles = makeStyles(theme => ({
     border: 0,
     borderRadius: 3,
     color: theme.palette.text.primary,
-    marginRight: theme.spacing(4),
-    marginLeft: theme.spacing(4),
   },
   link: {
     color: theme.palette.primary,
-    marginRight: theme.spacing(4),
-    marginLeft: theme.spacing(4),
   },
   boxForHeaderBrand: {
-    marginBottom: "-75px",
-    marginLeft: theme.spacing(5),
+    marginBottom: "-100px",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "0",
+    },
   },
 }))
 
@@ -68,42 +64,64 @@ const HeaderComponent = props => {
         <HideOnScroll {...props}>
           <AppBar>
             <Toolbar className={classes.header}>
-              <Box className={classes.boxForHeaderBrand}>
-                <Link to="/">
-                  <BrandLinkSVG />
-                </Link>
-              </Box>
+              <Grid align="center" justify="space-between" container>
+                <Grid
+                  className={classes.boxForHeaderBrand}
+                  item
+                  xs={12}
+                  sm={6}
+                  lg={3}
+                >
+                  <Link to="/">
+                    <BrandLinkSVG />
+                  </Link>
+                </Grid>
 
-              <Box>
-                <Link style={{ textDecoration: "none" }} to="/about">
-                  <Button
-                    component="p"
-                    color="primary"
-                    className={(classes.button, classes.link)}
-                  >
-                    About
-                  </Button>
-                </Link>
-                <Link style={{ textDecoration: "none" }} to="/blog">
-                  <Button
-                    component="p"
-                    color="primary"
-                    className={(classes.button, classes.link)}
-                  >
-                    Blog
-                  </Button>
-                </Link>
-                <Link style={{ textDecoration: "none" }} to="/get-started">
-                  <Button
-                    component="p"
-                    variant="contained"
-                    color="primary"
-                    className={classes.button}
-                  >
-                    Contact Now
-                  </Button>
-                </Link>
-              </Box>
+                <Grid
+                  container
+                  align="center"
+                  item
+                  xs={12}
+                  sm={6}
+                  justify="flex-end"
+                  spacing={6}
+                >
+                  <Grid item xs={4}>
+                    <Link style={{ textDecoration: "none" }} to="/about">
+                      <Button
+                        component="p"
+                        color="primary"
+                        className={(classes.button, classes.link)}
+                      >
+                        About
+                      </Button>
+                    </Link>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Link style={{ textDecoration: "none" }} to="/blog">
+                      <Button
+                        component="p"
+                        color="primary"
+                        className={(classes.button, classes.link)}
+                      >
+                        Blog
+                      </Button>
+                    </Link>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Link style={{ textDecoration: "none" }} to="/get-started">
+                      <Button
+                        component="p"
+                        variant="contained"
+                        color="primary"
+                        className={classes.button}
+                      >
+                        Contact Now
+                      </Button>
+                    </Link>
+                  </Grid>
+                </Grid>
+              </Grid>
             </Toolbar>
           </AppBar>
         </HideOnScroll>

@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../Components/layout"
 import ArticlePreview from "../Components/article-preview"
-import { Grid, makeStyles, GridList, GridListTile } from "@material-ui/core"
+import { Grid, makeStyles, Container } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -11,8 +11,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-around",
     overflow: "hidden",
     backgroundColor: theme.palette.background.paper,
+    paddingTop: theme.spacing(15),
+    paddingBottom: theme.spacing(5),
   },
-  gridList: {},
 }))
 
 const BlogIndex = ({ location, data }) => {
@@ -20,19 +21,16 @@ const BlogIndex = ({ location, data }) => {
   const classes = useStyles()
   return (
     <Layout location={location}>
-      <div>Blog</div>
-      <h2>Recent articles</h2>
       <div className={classes.root}>
-        <GridList
-          spacing="200"
-          cellHeight="auto"
-          className={classes.gridList}
-          cols={3}
-        >
-          {posts.map(tile => (
-            <ArticlePreview article={tile} />
-          ))}
-        </GridList>
+        <Container>
+          <Grid container spacing={4}>
+            {posts.map(tile => (
+              <Grid item xs={12} md={6}>
+                <ArticlePreview article={tile} />
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
       </div>
     </Layout>
   )

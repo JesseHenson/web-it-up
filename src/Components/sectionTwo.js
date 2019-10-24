@@ -1,134 +1,179 @@
 import React from "react"
 import styled from "styled-components"
-import {
-  backgroundColor,
-  primaryColor,
-  backgroundText,
-} from "./styledConstants"
+
 import BrandSvg from "../Components/brandSvg"
 import Img from "gatsby-image"
-import {
-  Box,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
-  makeStyles,
-  CardHeader,
-  Container,
-} from "@material-ui/core"
+
+import clsx from "clsx"
+import Card from "@material-ui/core/Card"
+import Container from "@material-ui/core/Container"
+
+import CardHeader from "@material-ui/core/CardHeader"
+import CardMedia from "@material-ui/core/CardMedia"
+import CardContent from "@material-ui/core/CardContent"
+import CardActions from "@material-ui/core/CardActions"
+import Collapse from "@material-ui/core/Collapse"
+import Avatar from "@material-ui/core/Avatar"
+import IconButton from "@material-ui/core/IconButton"
+import Typography from "@material-ui/core/Typography"
+import { red } from "@material-ui/core/colors"
+import FavoriteIcon from "@material-ui/icons/Favorite"
+import ShareIcon from "@material-ui/icons/Share"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import MoreVertIcon from "@material-ui/icons/MoreVert"
 import { Link } from "gatsby"
-
-const StyledArticleTwo = styled.article`
-  display: flex;
-  flex-direction: row;
-  max-width: 100vw;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`
-
-export const CardWrapper = styled.div`
-  margin-top: 4rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
+import { makeStyles } from "@material-ui/styles"
 
 const useStyles = makeStyles(theme => ({
-  card: {
-    minWidth: 275,
-    maxWidth: 650,
-    height: "100%",
-    background: "rgba(36, 34, 34, 1)",
-    margin: theme.spacing(4),
-    padding: theme.spacing(4),
-    textAlign: "center",
-    borderRadius: "5px",
+  media: {
+    height: 0,
+    paddingTop: "56.25%", // 16:9
   },
-  cardHeader: {
-    color: theme.palette.text.primary,
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
   },
-  cardContent: {
-    color: theme.palette.text.primary,
+  expandOpen: {
+    transform: "rotate(180deg)",
   },
-  cardAction: {
-    display: "flex",
-    justifyContent: "center",
-  },
-  imageWrapper: {
-    width: 50,
-    height: 50,
-  },
-  article: {
-    display: "flex",
-    flexDirection: "row",
-    maxWidth: "100%",
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
-    },
-  },
-  sectionContainer: {
-    position: "relative",
-    backgroundColor: theme.palette.primary.main,
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
-    justifyContent: "center",
-    padding: "100px 50px",
-    marginTop: "-20px",
-    borderRadius: "10px 10px 0 0",
-    maxWidth: "100%",
+  avatar: {
+    backgroundColor: red[500],
   },
 }))
 
 const SectionTwo = ({ cardInfo }) => {
   // console.log(cardInfo[0].node.icon)
   const classes = useStyles()
+  const [expanded, setExpanded] = React.useState(false)
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded)
+  }
+
   return (
     <>
-      <Container className={classes.sectionContainer}>
-        <BrandSvg style={{ marginTop: "-175px" }} />
-        <Box className={classes.article}>
-          {cardInfo.map(card => {
-            return (
-              <CardWrapper>
-                <Box className={classes.imageWrapper}>
-                  <Img fluid={card.node.icon.fluid} />
-                </Box>
-                <Box className={classes.card}>
-                  <CardHeader
-                    className={classes.cardHeader}
-                    title={card.node.title}
-                  ></CardHeader>
-                  <CardContent>
-                    <Typography
-                      className={classes.cardContent}
-                      variant="h6"
-                      gutterBottom
-                    >
-                      {card.node.content.content}
-                    </Typography>
-                  </CardContent>
-                  <CardActions className={classes.cardAction}>
-                    <Link style={{ textDecoration: "none" }} to="/get-started">
-                      <Button
-                        className={classes.button}
-                        component="p"
-                        variant="outlined"
-                        color="primary"
+    
+      {cardInfo.map(card => {
+        console.log(card)
+        return (
+          <>
+            <Card className={classes.card}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    {card.node.letter}
+                  </Avatar>
+                }
+                action={
+                  <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title="Shrimp and Chorizo Paella"
+                subheader="September 14, 2016"
+              />
+              <Img className={classes.media} fluid={card.node.icon.fluid} />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {card.node.content.mar}
+                </Typography>
+              </CardContent>
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+                <IconButton
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                  })}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                >
+                  <ExpandMoreIcon />
+                </IconButton>
+              </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography paragraph>Method:</Typography>
+                  <Typography paragraph>
+                    Heat 1/2 cup of the broth in a pot until simmering, add
+                    saffron and set aside for 10 minutes.
+                  </Typography>
+                  <Typography paragraph>
+                    Heat oil in a (14- to 16-inch) paella pan or a large, deep
+                    skillet over medium-high heat. Add chicken, shrimp and
+                    chorizo, and cook, stirring occasionally until lightly
+                    browned, 6 to 8 minutes. Transfer shrimp to a large plate
+                    and set aside, leaving chicken and chorizo in the pan. Add
+                    pimentón, bay leaves, garlic, tomatoes, onion, salt and
+                    pepper, and cook, stirring often until thickened and
+                    fragrant, about 10 minutes. Add saffron broth and remaining
+                    4 1/2 cups chicken broth; bring to a boil.
+                  </Typography>
+                  <Typography paragraph>
+                    Add rice and stir very gently to distribute. Top with
+                    artichokes and peppers, and cook without stirring, until
+                    most of the liquid is absorbed, 15 to 18 minutes. Reduce
+                    heat to medium-low, add reserved shrimp and mussels, tucking
+                    them down into the rice, and cook again without stirring,
+                    until mussels have opened and rice is just tender, 5 to 7
+                    minutes more. (Discard any mussels that don’t open.)
+                  </Typography>
+                  <Typography>
+                    Set aside off of the heat to let rest for 10 minutes, and
+                    then serve.
+                  </Typography>
+                </CardContent>
+              </Collapse>
+            </Card>
+
+            {/* <CardWrapper>
+                  <Box className={classes.imageWrapper}>
+                    <Img fluid={card.node.icon.fluid} />
+                  </Box>
+                  <Box className={classes.card}>
+                    <CardHeader
+                      className={classes.cardHeader}
+                      title={card.node.title}
+                    ></CardHeader>
+                    <CardContent>
+                      <Typography
+                        className={classes.cardContent}
+                        variant="h6"
+                        gutterBottom
                       >
-                        Get Started
-                      </Button>
-                    </Link>
-                  </CardActions>
-                </Box>
-              </CardWrapper>
-            )
-          })}
-        </Box>
-      </Container>
+                        {card.node.content.content}
+                      </Typography>
+                    </CardContent>
+                    <CardActions className={classes.cardAction}>
+                      <Link
+                        style={{ textDecoration: "none" }}
+                        to="/get-started"
+                      >
+                        <Button
+                          className={classes.button}
+                          component="p"
+                          variant="outlined"
+                          color="primary"
+                        >
+                          Get Started
+                        </Button>
+                      </Link>
+                    </CardActions>
+                  </Box>
+                </CardWrapper> */}
+          </>
+        )
+      })}
+      {/* </Box>
+      </Container> */}
     </>
   )
 }
