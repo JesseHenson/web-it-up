@@ -1,5 +1,5 @@
 ---
-title: "Featured Item: See your website's speed fast"
+title: ""
 date: "2017-08-10"
 featured: true
 image: "mountains.jpg"
